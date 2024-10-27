@@ -1,0 +1,11 @@
+#wscontainer {
+	background-color: red;
+	font-size: x-large;
+	width:200px;
+	height:200px;
+}
+
+#main {
+	display:flex;
+	justify-content: center;
+}

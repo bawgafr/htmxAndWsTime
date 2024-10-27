@@ -1,0 +1,31 @@
+{{ block "index" . }}
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>WebSocket</title>
+  <script src="https://unpkg.com/htmx.org@2.0.1"></script>
+  <script src="https://unpkg.com/htmx.org@1.9.12/dist/ext/ws.js"></script>
+  <link rel="icon" type="image/x-con" href="images/favicon.ico">
+</head>
+
+<body>
+  <p id="output"></p>
+
+  <div id="main">
+    <div id="wscontainer" hx-ext="ws" ws-connect="/ws" hx-swap="innerHTML">
+      <div id="wsmsg"></div>
+    </div>
+  </div>
+</body>
+
+</html>
+
+{{end}}
+
+
+{{ block "time" .}} 
+<div id='wsmsg' hx-swap-oob='#wsmsg'>Time is: {{.}} </div>
+{{end}}
+
