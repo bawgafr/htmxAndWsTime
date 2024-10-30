@@ -27,6 +27,13 @@ type WebsocketManager struct {
 	Subscribers map[*Subscriber]struct{} // fake set
 	SyncMutex   sync.Mutex
 	template    *Templates
+	Action      func(*WebsocketManager, ...[]any)
+}
+
+func (w *WebsocketManager) DoAction(extra ...any) {
+	if w.Action != nil {
+		go w.Action(w, extra)
+	}
 }
 
 func NewWebsocketManager(embededStatic fs.FS) *WebsocketManager {
